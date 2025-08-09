@@ -9,6 +9,7 @@ use App\Http\Controllers\ParentsController;
 use App\Http\Controllers\StudentsController;
 use App\Http\Controllers\ClassesController;
 use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\StudentFunctions\StudentFunctionsController;
 
 Route::get('/test', function () {
     return response()->json(['message' => 'Hello from Laravel API']);
@@ -54,3 +55,13 @@ Route::get('/subjects', [SubjectsController::class, 'index']);
 Route::post('/subjects/add', [SubjectsController::class, 'add']);
 Route::post('/subjects/update', [SubjectsController::class, 'update']);
 Route::post('/subjects/delete', [SubjectsController::class, 'delete']);
+
+
+
+//Student Functions
+///////////////////////////////////////
+//Detention
+Route::get('/detentions', [StudentFunctionsController::class, 'get_student_detention']);
+Route::post('/detentions/add', [StudentFunctionsController::class, 'add_detention']);
+Route::post('/detentions/update', [StudentFunctionsController::class, 'update_detention']);
+Route::post('/detentions/delete', [StudentFunctionsController::class, 'delete']);
