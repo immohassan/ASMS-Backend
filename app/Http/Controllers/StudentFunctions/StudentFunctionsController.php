@@ -10,7 +10,7 @@ class StudentFunctionsController extends Controller
 {
     //Detention
     public function get_student_detention(Request $request){
-        $detentions = Detention::with("student")->where('student_id',$request->student_id );
+        $detentions = Detention::with("student")->where('student_id',$request->student_id )->get();
         if ($detentions->isEmpty()) {
             return response()->json('No Detentions');
         }
@@ -51,8 +51,6 @@ class StudentFunctionsController extends Controller
 
         public function delete(Request $request)
     {
-        $request->validate(['id' => 'required|exists:detentions,id']);
-
         $detention = Detention::find($request->id);
         $detention->delete();
 
