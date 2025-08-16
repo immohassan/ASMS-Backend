@@ -10,7 +10,7 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::where('is_deleted', 0)->get();
+        $users = User::with(['role'])->where('is_deleted', 0)->get();
 
         if ($users->isEmpty()) {
             return response()->json('No Users Available');
@@ -21,15 +21,6 @@ class UsersController extends Controller
 
     public function add(Request $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email',
-            'phone' => 'nullable|string',
-            'address' => 'nullable|string',
-            'password' => 'required|string|min:6',
-            'role_id' => 'required|integer',
-        ]);
-
         $user = User::create([
             'name' => $request->input('name'),
             'email' => $request->input('email'),

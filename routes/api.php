@@ -26,6 +26,11 @@ use App\Http\Controllers\ClassFunctions\ExamScheduleController;
 Route::get('/test', function () {
     return response()->json(['message' => 'Hello from Laravel API']);
 });
+
+Route::options('/{any}', function () {
+    return response()->json([], 200);
+})->where('any', '.*');
+
 Route::get('/apitester', function () {
     return view('apiTesting'); // apitester.blade.php inside resources/views
 })->name('apitester');
@@ -47,7 +52,7 @@ Route::post('/departments/delete', [DepartmentsController::class, 'delete']);
 //Teacher
 Route::get('/teachers', [TeachersController::class, 'index']);
 Route::post('/teachers/add', [TeachersController::class, 'add']);
-Route::post('/teachers/update', [TeachersController::class, 'update']);
+Route::put('/teachers/update', [TeachersController::class, 'update']);
 Route::post('/teachers/delete', [TeachersController::class, 'delete']);
 //Parents
 Route::get('/parents', [ParentsController::class, 'index']);
