@@ -25,6 +25,9 @@ class AttendanceController extends Controller
             'student_id' => $request->student_id,
             'subject_id' => $request->subject_id,
             'status' => $request->status,
+            'sign_in' => $request->sign_in,
+            'sign_out' => $request->sign_out,
+            'picked_by' => $request->picked_by,
             'date' => $request->date,
             'notes' => $request->notes ?? null,
         ]);
@@ -44,6 +47,9 @@ class AttendanceController extends Controller
             'student_id' => $request->student_id ?? $attendance->student_id,
             'subject_id' => $request->subject_id ?? $attendance->subject_id,
             'status' => $request->status ?? $attendance->status,
+            'sign_in' => $request->sign_in ?? $request->sign_in,
+            'sign_out' => $request->sign_out ?? $request->sign_out,
+            'picked_by' => $request->picked_by ?? $request->picked_by,
             'dates' => $request->dates ?? $attendance->dates,
             'notes' => $request->notes ?? $attendance->notes,
         ]);
