@@ -14,8 +14,12 @@ return new class extends Migration
         Schema::create('attendance', function (Blueprint $table) {
             $table->id();
             $table->string('student_id');
-            $table->string('subject_id');
+            $table->string('subject_id')->nullable();
+            $table->string('class_id');
             $table->string('status');
+            $table->string('sign_in');
+            $table->string('sign_out');
+            $table->string('picked_by');
             $table->date('date');
             $table->timestamps();
         });

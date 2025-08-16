@@ -8,7 +8,7 @@ class Attendance extends Model
 {
     use HasFactory;
     protected $table = "attendance";
-    protected $fillable = ['class_id', 'student_id', 'subject_id', 'status', 'notes', 'date'];
+    protected $fillable = ['class_id', 'student_id', 'subject_id', 'status', 'notes', 'date', 'sign_in', 'sign_out', 'picked_by'];
      public function student()
     {
         return $this->belongsTo(Students::class);
